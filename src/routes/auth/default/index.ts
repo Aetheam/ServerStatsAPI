@@ -23,7 +23,6 @@ async function BasicAuth(fastify: FastifyInstance, opts:FastifyPluginOptions): P
     })
     fastify.post("/login", async function (request: FastifyRequest<{Body: RequestBodyLogin}>, reply: FastifyReply) {
         const {body} = request;
-        
     })
 }
 module.exports = BasicAuth

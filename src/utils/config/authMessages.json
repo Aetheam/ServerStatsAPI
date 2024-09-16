@@ -1,0 +1,9 @@
+{
+    "register": {
+        "username_already_taken": "please modify your username, is already taken",
+        "email_already_taken": "please modify your email, or just connect with this. this email is already taken"
+    },
+    "login":{
+        "wrong_username": "your username "
+    }
+}
