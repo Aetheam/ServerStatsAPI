@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from "fastify";
-import { RegisterBodyRequest } from "../../../types/auth";
+import {RequestBodyLogin, RequestBodyRegister} from "../../../types/auth";
 
 const authCredential = {
     username: "royaljacquess",
@@ -8,7 +8,7 @@ const authCredential = {
 
 const error = false;
 async function BasicAuth(fastify: FastifyInstance, opts:FastifyPluginOptions): Promise<void>  {
-    fastify.get("/register", async function (request: FastifyRequest, reply: FastifyReply) {
+    fastify.get("/register", async function (request: FastifyRequest<{Body: RequestBodyRegister}>, reply: FastifyReply) {
         if(error){
             reply.status(400).send({
                 error: 401,
@@ -21,10 +21,9 @@ async function BasicAuth(fastify: FastifyInstance, opts:FastifyPluginOptions): P
             })
         }
     })
-    fastify.post("/login", async function (request: FastifyRequest, reply: FastifyReply) {
-        reply.send({
-            "message": "salut"
-        })
+    fastify.post("/login", async function (request: FastifyRequest<{Body: RequestBodyLogin}>, reply: FastifyReply) {
+        const {body} = request;
+        
     })
 }
 module.exports = BasicAuth
